@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/nfcId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="51dp"
+        android:text="NFC ID" />
+
+    <EditText
+        android:id="@+id/nfcText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nfcId"
+        android:layout_alignBottom="@+id/nfcId"
+        android:layout_marginLeft="54dp"
+        android:layout_toRightOf="@+id/nfcId"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/authProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nfcText"
+        android:layout_marginTop="50dp"
+        android:layout_toLeftOf="@+id/nfcText"
+        android:onClick="authenticateProduct"
+        android:text="Authenticate" />
+
+    <EditText
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/authProduct"
+        android:layout_centerVertical="true"
+        android:ems="10" />
+
+</RelativeLayout>
