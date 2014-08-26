@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.otentico.nfs.client.IHttpClient;
 import com.otentico.nfs.clientImpl.RestClient;
+import com.otentico.nfs.clientImpl.TestClient;
 import com.otentico.nfs.model.Product;
 
 public class MainActivity extends Activity {
@@ -33,18 +34,18 @@ public class MainActivity extends Activity {
 		try {
 			EditText nfsText = (EditText) findViewById(R.id.nfcText);
 			String nfsId = nfsText.getText().toString();
+			IHttpClient client = new TestClient(getAssets());
 			// IHttpClient client = new RestClient();
-			IHttpClient client = new RestClient();
-			Product prod;
-			prod = client.getAuthenticatedProduct(nfsId);
+			Product prod = client.getAuthenticatedProduct(nfsId);
 			EditText result = (EditText) findViewById(R.id.resultText);
-			result.setText(prod.toString());
-
+			if (prod != null) {
+				result.setText(prod.toString());
+			} else {
+				result.setText("Not Authenticated");
+			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
